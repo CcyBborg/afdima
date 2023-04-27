@@ -44,6 +44,7 @@ export const getStaticProps: GetStaticProps<
   HomePageProps,
   ParsedQueryParams
 > = async ({ locale, params }) => {
+  params = { pages: [ 'furniture' ] };
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery(
     [API_ENDPOINTS.SETTINGS, { language: locale }],

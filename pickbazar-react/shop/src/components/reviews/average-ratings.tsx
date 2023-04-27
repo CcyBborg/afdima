@@ -8,6 +8,7 @@ type AverageRatingsProps = {
   ratings?: number;
   ratingCount?: RatingCount[];
   title: string;
+  size?: string;
 };
 
 const AverageRatings: React.FC<AverageRatingsProps> = ({
@@ -15,6 +16,7 @@ const AverageRatings: React.FC<AverageRatingsProps> = ({
   totalReviews,
   ratings,
   ratingCount,
+  size
 }) => {
   const { t } = useTranslation('common');
 
@@ -22,21 +24,23 @@ const AverageRatings: React.FC<AverageRatingsProps> = ({
   if (!ratingCount) return null;
 
   return (
-    <div className="p-5 md:py-12 lg:px-16">
+    <div className={`p-5 md:py-12 ${size === 'sm' ? 'lg:px-0' : 'lg:px-16'}`}>
       <h2 className="mb-7 text-lg font-semibold tracking-tight text-heading">
         {t('text-ratings-reviews')} {title}
       </h2>
 
       <div className="flex w-full flex-col divide-y divide-gray-200 divide-opacity-70 sm:flex-row sm:items-center sm:space-x-8 sm:divide-y-0 sm:divide-x rtl:sm:space-x-reverse rtl:sm:divide-x-reverse">
-        <div className="w-full pb-4 sm:w-auto sm:pb-0">
-          <RatingsBadge rating={ratings} className="mb-4" variant="large" />
-          <p className="text-base text-gray-400">
-            <span>
-              {totalReviews} {t('text-ratings')}
-            </span>
-          </p>
-        </div>
-        <div className="w-full space-y-3 py-0.5 pt-4 sm:w-auto sm:pt-0 ltr:sm:pl-8 rtl:sm:pr-8">
+        {size !== 'sm' && (
+          <div className="w-full pb-4 sm:w-auto sm:pb-0">
+            <RatingsBadge rating={ratings} className="mb-4" variant="large" />
+            <p className="text-base text-gray-400">
+              <span>
+                {totalReviews} {t('text-ratings')}
+              </span>
+            </p>
+          </div>
+        )}
+        <div className={`w-full space-y-3 py-0.5 pt-4 sm:w-auto sm:pt-0 ${size === 'sm' ? '' : 'ltr:sm:pl-8 rtl:sm:pr-8'}`}>
           <RatingProgressBar
             ratingProgressItem={ratingCount.find(
               (rating) => Number(rating.rating) === 5

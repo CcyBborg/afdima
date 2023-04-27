@@ -6,6 +6,7 @@ import { useTranslation } from 'next-i18next';
 import { useModalAction } from '@/components/ui/modal/modal.context';
 import { productPlaceholder } from '@/lib/placeholders';
 import { PlusIcon } from '@/components/icons/plus-icon';
+import RatingsBadge from '@/components/ui/rating-badge';
 
 type NeonProps = {
   product: any;
@@ -60,6 +61,8 @@ const Neon: React.FC<NeonProps> = ({ product, className }) => {
       {/* End of product image */}
 
       <header className="p-3 md:p-6">
+
+        <div className="flex justify-between">
         {product_type.toLowerCase() === 'variable' ? (
           <div className="mb-2">
             <span className="text-sm font-semibold text-heading md:text-base">
@@ -83,6 +86,10 @@ const Neon: React.FC<NeonProps> = ({ product, className }) => {
           </div>
         )}
         {/* End of product price */}
+        {product.ratings ? (
+          <RatingsBadge rating={product.ratings} className="mb-4 text-xs" variant="xs" boxed/>
+        ) : null}
+        </div>
 
         <h3
           className="mb-4 cursor-pointer truncate text-xs text-body md:text-sm"

@@ -34,8 +34,8 @@ export default function PromotionSlider({ sliders }: { sliders: any[] }) {
           breakpoints={offerSliderBreakpoints}
           modules={[Navigation]}
           navigation={{
-            nextEl: '.next',
-            prevEl: '.prev',
+            nextEl: '#promotion-next',
+            prevEl: '#promotion-prev',
           }}
         >
           {sliders?.map((d) => (
@@ -54,6 +54,7 @@ export default function PromotionSlider({ sliders }: { sliders: any[] }) {
         <div
           className="absolute z-10 flex items-center justify-center w-8 h-8 -mt-4 transition-all duration-200 border rounded-full shadow-xl cursor-pointer prev top-2/4 ltr:-left-4 rtl:-right-4 ltr:md:-left-5 rtl:md:-right-5 md:-mt-5 md:w-9 md:h-9 bg-light border-border-200 border-opacity-70 text-heading hover:bg-accent hover:text-light hover:border-accent"
           role="button"
+          id="promotion-prev"
         >
           <span className="sr-only">{t('common:text-previous')}</span>
           <ArrowPrev width={18} height={18} />
@@ -61,6 +62,7 @@ export default function PromotionSlider({ sliders }: { sliders: any[] }) {
         <div
           className="absolute z-10 flex items-center justify-center w-8 h-8 -mt-4 transition-all duration-200 border rounded-full shadow-xl cursor-pointer next top-2/4 ltr:-right-4 rtl:-left-4 ltr:md:-right-5 md:-mt-5 md:w-9 md:h-9 bg-light border-border-200 border-opacity-70 text-heading hover:bg-accent hover:text-light hover:border-accent"
           role="button"
+          id="promotion-next"
         >
           <span className="sr-only">{t('common:text-next')}</span>
           <ArrowNext width={18} height={18} />

@@ -103,7 +103,7 @@ const VerifiedItemList: React.FC<Props> = ({ className }) => {
         <ItemInfoRow title={t('text-sub-total')} value={sub_total} />
         <ItemInfoRow title={t('text-tax')} value={tax} />
         <ItemInfoRow title={t('text-shipping')} value={shipping} />
-        {discount && coupon ? (
+        {discount && coupon && (
           <div className="flex justify-between">
             <p className="text-sm text-body ltr:mr-4 rtl:ml-4">
               {t('text-discount')}
@@ -116,25 +116,28 @@ const VerifiedItemList: React.FC<Props> = ({ className }) => {
             </span>
             <span className="text-sm text-body">{discountPrice}</span>
           </div>
-        ) : (
-          <div className="mt-5 !mb-4 flex justify-between">
-            <Coupon />
-          </div>
-        )}
+        )
+          // <div className="mt-5 !mb-4 flex justify-between">
+          //   <Coupon />
+          // </div>
+        }
         <div className="flex justify-between pt-3 border-t-4 border-double border-border-200">
           <p className="text-base font-semibold text-heading">
             {t('text-total')}
           </p>
           <span className="text-base font-semibold text-heading">{total}</span>
         </div>
+        <p>
+          We will hold to your money untill you receive an order. You can cancel order with full refund no later than 1 hour from sellers order acceptance.  
+        </p>
       </div>
-      {verifiedResponse && (
+      {/* {verifiedResponse && (
         <Wallet
           totalPrice={totalPrice}
           walletAmount={verifiedResponse.wallet_amount}
           walletCurrency={verifiedResponse.wallet_currency}
         />
-      )}
+      )} */}
       {use_wallet && !Boolean(payableAmount) ? null : (
         <PaymentGrid className="p-5 mt-10 border border-gray-200 bg-light" />
       )}

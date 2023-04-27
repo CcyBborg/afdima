@@ -13,6 +13,19 @@
     ]
   },
   {
+    "id": 11,
+    "name": "Order Confirmation By Supplier",
+    "slug": "order-processing",
+    "serial": 2,
+    "color": "#d87b64",
+    "created_at": "2021-03-13T15:01:42.000000Z",
+    "updated_at": "2021-03-13T15:01:42.000000Z",
+    "language": "en",
+    "translated_languages": [
+      "en"
+    ]
+  },
+  {
     "id": 2,
     "name": "Order Processing",
     "slug": "order-processing",

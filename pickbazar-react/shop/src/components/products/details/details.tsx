@@ -28,6 +28,7 @@ import Spinner from '@/components/ui/loaders/spinner/spinner';
 import { useUser } from '@/framework/user';
 import { useInWishlist, useToggleWishlist } from '@/framework/wishlist';
 import { useIntersection } from 'react-use';
+import ShopCard from '@/components/ui/cards/shop';
 import { StarIcon } from '@/components/icons/star-icon';
 
 function FavoriteButton({
@@ -99,7 +100,6 @@ const Details: React.FC<Props> = ({
     id,
     name,
     image, //could only had image we need to think it also
-    description,
     unit,
     categories,
     gallery,
@@ -109,6 +109,8 @@ const Details: React.FC<Props> = ({
     slug,
     ratings,
   } = product ?? {};
+
+  const description = product.description + product.description; 
 
   const { t } = useTranslation('common');
   const [_, setShowStickyShortDetails] = useAtom(stickyShortDetailsAtom);
@@ -121,6 +123,7 @@ const Details: React.FC<Props> = ({
     rootMargin: '0px',
     threshold: 1,
   });
+
   useEffect(() => {
     if (intersection && intersection.isIntersecting) {
       setShowStickyShortDetails(false);
@@ -314,17 +317,12 @@ const Details: React.FC<Props> = ({
           )}
 
           {shop?.name && (
-            <div className="mt-2 flex items-center">
+                          <div className="mt-2 flex items-center">
               <span className="py-1 text-sm font-semibold capitalize text-heading ltr:mr-6 rtl:ml-6">
                 {t('common:text-sellers')}
               </span>
 
-              <button
-                onClick={() => navigate(Routes.shop(shop?.slug))}
-                className="text-sm tracking-wider text-accent underline transition hover:text-accent-hover hover:no-underline"
-              >
-                {shop?.name}
-              </button>
+              <ShopCard shop={shop} key={shop.id} />
             </div>
           )}
         </div>

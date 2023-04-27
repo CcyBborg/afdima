@@ -27,9 +27,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
   className,
   ...props
 }) => {
-  const Component = product?.type?.settings?.productCard
-    ? MAP_PRODUCT_TO_CARD[product?.type?.settings?.productCard]
-    : Helium;
+  // const Component = product?.type?.settings?.productCard
+  //   ? MAP_PRODUCT_TO_CARD[product?.type?.settings?.productCard]
+  //   : Helium;
+  const Component = Neon;
   return <Component product={product} {...props} className={className} />;
 };
 export default ProductCard;

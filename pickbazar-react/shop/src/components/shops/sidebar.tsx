@@ -10,6 +10,7 @@ import { getIcon } from '@/lib/get-icon';
 import { productPlaceholder } from '@/lib/placeholders';
 import * as socialIcons from '@/components/icons/social';
 import type { Shop } from '@/types';
+import AverageRatings from '@/components/reviews/average-ratings';
 
 type ShopSidebarProps = {
   shop: Shop | any;
@@ -85,23 +86,12 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({
                 </p>
               )}
 
-              <div className="flex items-center justify-start mt-3">
-                {shop?.settings?.socials?.map((item: any, index: number) => (
-                  <a
-                    key={index}
-                    href={item.url}
-                    target="_blank"
-                    className={`text-muted focus:outline-none ltr:mr-6 rtl:ml-6 ltr:last:mr-0 rtl:last:ml-0 transition-colors duration-300 hover:${item.hoverClass}`}
-                    rel="noreferrer"
-                  >
-                    {getIcon({
-                      iconList: socialIcons,
-                      iconName: item.icon,
-                      className: 'w-4 h-4',
-                    })}
-                  </a>
-                ))}
-              </div>
+<button
+  type="button"
+              className="inline-flex h-9 shrink-0 items-center justify-center rounded border border-transparent bg-accent px-3 py-0 text-sm font-semibold leading-none text-light outline-none transition duration-300 ease-in-out hover:bg-accent-hover focus:shadow focus:outline-none focus:ring-1 focus:ring-accent-700"
+            >
+              Contact Supplier
+            </button>
             </div>
 
             <div className="p-7">
@@ -148,6 +138,20 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({
                   </div>
                 </div>
               )}
+
+              <AverageRatings
+                title={shop.name}
+                ratingCount={[{
+                  rating: 3,
+                  total: 2
+                }, {
+                  rating: 4,
+                  total: 1
+                }]}
+                totalReviews={3.4}
+                ratings={4}
+                size='sm'
+              />
             </div>
           </Scrollbar>
         </div>

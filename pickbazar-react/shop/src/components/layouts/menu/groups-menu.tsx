@@ -23,12 +23,9 @@ interface GroupsMenuProps {
 const GroupsMenu: React.FC<GroupsMenuProps> = ({
   className,
   groups,
-  defaultGroup,
   variant = 'colored',
 }) => {
-  const router = useRouter();
-  const selectedMenu =
-    groups?.find((type) => router.asPath.includes(type?.slug)) ?? defaultGroup;
+  const selectedMenu = { name: 'Select category', icon: null };
   return (
     <Menu
       as="div"
@@ -148,10 +145,8 @@ const GroupsDropdownMenu: React.FC<GroupsDropdownMenuProps> = ({ variant }) => {
   const { types }: any = useTypes({
     limit: TYPES_PER_PAGE,
   });
-  //FIXME: remove this
-  const { homePage }: any = useHomepage();
   return (
-    <GroupsMenu groups={types} defaultGroup={homePage} variant={variant} />
+    <GroupsMenu groups={types} variant={variant} />
   );
 };
 

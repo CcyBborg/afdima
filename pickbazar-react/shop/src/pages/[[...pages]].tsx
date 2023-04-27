@@ -24,7 +24,7 @@ const Compact = dynamic(() => import('@/components/layouts/compact'));
 
 const MAP_LAYOUT_TO_GROUP: Record<string, any> = {
   classic: Classic,
-  modern: Modern,
+  modern: Modern, // THIS ONE
   standard: Standard,
   minimal: Minimal,
   compact: Compact,
