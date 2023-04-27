@@ -3,7 +3,7 @@ import cn from 'classnames';
 import usePrice from '@/lib/use-price';
 import { AddToCart } from '@/components/products/add-to-cart/add-to-cart';
 import { useTranslation } from 'next-i18next';
-import { useModalAction } from '@/components/ui/modal/modal.context';
+import Link from '@/components/ui/link';
 import { productPlaceholder } from '@/lib/placeholders';
 import { PlusIcon } from '@/components/icons/plus-icon';
 import RatingsBadge from '@/components/ui/rating-badge';
@@ -28,12 +28,8 @@ const Neon: React.FC<NeonProps> = ({ product, className }) => {
     amount: max_price,
   });
 
-  const { openModal } = useModalAction();
-
-  function handleProductQuickView() {
-    return openModal('PRODUCT_DETAILS', product.slug);
-  }
   return (
+    <Link href="http://localhost:3003/products/forever-21-solid-bodycon-midi-dress" target="_blank">
     <article
       className={cn(
         'product-card cart-type-neon h-full transform overflow-hidden rounded border border-border-200 bg-light shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow',
@@ -42,7 +38,6 @@ const Neon: React.FC<NeonProps> = ({ product, className }) => {
     >
       <div
         className="relative flex h-48 w-auto cursor-pointer items-center justify-center sm:h-64"
-        onClick={handleProductQuickView}
       >
         <span className="sr-only">{t('text-product-image')}</span>
         <Image
@@ -92,8 +87,7 @@ const Neon: React.FC<NeonProps> = ({ product, className }) => {
         </div>
 
         <h3
-          className="mb-4 cursor-pointer truncate text-xs text-body md:text-sm"
-          onClick={handleProductQuickView}
+          className="mb-4 truncate text-xs text-body md:text-sm"
         >
           {name}
         </h3>
@@ -103,8 +97,8 @@ const Neon: React.FC<NeonProps> = ({ product, className }) => {
           <>
             {Number(quantity) > 0 && (
               <button
-                onClick={handleProductQuickView}
                 className="group flex h-7 w-full items-center justify-between rounded bg-gray-100 text-xs text-body-dark transition-colors hover:border-accent hover:bg-accent hover:text-light focus:border-accent focus:bg-accent focus:text-light focus:outline-none md:h-9 md:text-sm"
+                onClick={event => event.preventDefault()}
               >
                 <span className="flex-1">{t('text-add')}</span>
                 <span className="grid h-7 w-7 place-items-center bg-gray-200 transition-colors duration-200 group-hover:bg-accent-600 group-focus:bg-accent-600 ltr:rounded-tr ltr:rounded-br rtl:rounded-tl rtl:rounded-bl md:h-9 md:w-9">
@@ -129,6 +123,7 @@ const Neon: React.FC<NeonProps> = ({ product, className }) => {
         {/* End of add to cart */}
       </header>
     </article>
+    </Link>
   );
 };
 

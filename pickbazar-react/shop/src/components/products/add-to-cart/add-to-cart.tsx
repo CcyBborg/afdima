@@ -48,6 +48,7 @@ export const AddToCart = ({
     e: React.MouseEvent<HTMLButtonElement | MouseEvent>
   ) => {
     e.stopPropagation();
+    e.preventDefault();
     // Check language and update
     if (item?.language !== language){
       updateCartLanguage(item?.language);
@@ -59,6 +60,7 @@ export const AddToCart = ({
   };
   const handleRemoveClick = (e: any) => {
     e.stopPropagation();
+    e.preventDefault();
     removeItemFromCart(item.id);
   };
   const outOfStock = isInCart(item?.id) && !isInStock(item.id);

@@ -43,10 +43,10 @@ export const siteSettings = {
       href: Routes.profile,
       label: 'profile-sidebar-profile',
     },
-    {
-      href: Routes.messages,
-      label: 'profile-sidebar-messages',
-    },
+    // {
+    //   href: Routes.messages,
+    //   label: 'profile-sidebar-messages',
+    // },
     {
       href: Routes.changePassword,
       label: 'profile-sidebar-password',
